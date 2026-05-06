@@ -1,0 +1,329 @@
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; color: #1a1a1a; }
+  .site { background: #fff; }
+
+  /* NAV */
+  .nav { background: #E5001A; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo svg { width: 36px; height: 36px; }
+  .nav-brand { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+  .nav-brand span { font-weight: 400; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.88); font-size: 14px; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { background: #fff; color: #E5001A; border: none; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 700; cursor: pointer; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #E5001A 0%, #b80015 100%); padding: 5rem 2rem 4rem; display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap; min-height: 500px; }
+  .hero-text { max-width: 440px; }
+  .hero-badge { display: inline-block; background: rgba(255,255,255,0.18); color: #fff; font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.2rem; letter-spacing: 0.8px; }
+  .hero-title { font-size: 42px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 1rem; }
+  .hero-title span { color: rgba(255,255,255,0.75); font-weight: 400; }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.65; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-white { background: #fff; color: #E5001A; border: none; padding: 13px 28px; border-radius: 28px; font-size: 15px; font-weight: 700; cursor: pointer; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); padding: 11px 26px; border-radius: 28px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .hero-visual { position: relative; }
+  .phone-frame { width: 200px; height: 400px; background: #fff; border-radius: 32px; border: 6px solid rgba(255,255,255,0.3); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+  .phone-header { background: #E5001A; padding: 14px 16px 10px; }
+  .phone-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .phone-greeting { color: rgba(255,255,255,0.8); font-size: 10px; }
+  .phone-name { color: #fff; font-size: 13px; font-weight: 700; }
+  .phone-search { background: rgba(255,255,255,0.2); border-radius: 8px; padding: 7px 10px; font-size: 10px; color: rgba(255,255,255,0.7); }
+  .phone-body { flex: 1; padding: 12px; background: #f7f7f7; overflow: hidden; }
+  .phone-section { font-size: 10px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+  .phone-cats { display: flex; gap: 6px; margin-bottom: 12px; }
+  .phone-cat { background: #fff; border-radius: 8px; padding: 6px 8px; font-size: 9px; text-align: center; flex: 1; border: 1px solid #eee; }
+  .phone-cat-icon { font-size: 14px; display: block; }
+  .phone-card { background: #fff; border-radius: 10px; padding: 8px; margin-bottom: 8px; border: 1px solid #eee; display: flex; gap: 8px; align-items: center; }
+  .phone-card-img { width: 36px; height: 36px; border-radius: 8px; background: #E5001A; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .phone-card-name { font-size: 10px; font-weight: 700; color: #1a1a1a; }
+  .phone-card-info { font-size: 9px; color: #888; }
+  .phone-card-rating { font-size: 9px; color: #E5001A; font-weight: 600; }
+
+  /* STATS BAR */
+  .stats-bar { background: #1a1a1a; padding: 2rem; display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 32px; font-weight: 800; color: #E5001A; }
+  .stat-label { font-size: 13px; color: #aaa; margin-top: 2px; }
+
+  /* HOW IT WORKS */
+  .section { padding: 5rem 2rem; }
+  .section-title { text-align: center; font-size: 30px; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem; }
+  .section-sub { text-align: center; font-size: 15px; color: #666; margin-bottom: 3.5rem; }
+  .steps { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .step { text-align: center; max-width: 180px; }
+  .step-num { width: 56px; height: 56px; background: #E5001A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; color: #fff; margin: 0 auto 1rem; }
+  .step-title { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 0.4rem; }
+  .step-desc { font-size: 13px; color: #666; line-height: 1.5; }
+
+  /* RESTAURANTS */
+  .restaurants { background: #fafafa; padding: 5rem 2rem; }
+  .cards-grid { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+  .rest-card { background: #fff; border-radius: 16px; border: 1px solid #eee; overflow: hidden; width: 190px; }
+  .rest-img { height: 100px; background: #E5001A; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .rest-info { padding: 12px; }
+  .rest-name { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+  .rest-meta { display: flex; justify-content: space-between; align-items: center; }
+  .rest-rating { font-size: 12px; color: #E5001A; font-weight: 600; }
+  .rest-time { font-size: 12px; color: #888; }
+  .rest-tag { display: inline-block; background: #fff3f4; color: #E5001A; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-top: 6px; font-weight: 600; }
+
+  /* RIDE BANNER */
+  .ride-banner { background: #E5001A; padding: 4rem 2rem; display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; text-align: center; }
+  .ride-text h2 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 0.8rem; }
+  .ride-text p { font-size: 15px; color: rgba(255,255,255,0.82); margin-bottom: 1.5rem; max-width: 400px; }
+  .app-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .app-btn { background: #fff; color: #E5001A; border: none; padding: 12px 24px; border-radius: 24px; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+  .app-btn i { font-size: 18px; }
+
+  /* TESTIMONIALS */
+  .testi { padding: 5rem 2rem; background: #fff; }
+  .testi-grid { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .testi-card { background: #fafafa; border-radius: 16px; border: 1px solid #eee; padding: 1.5rem; max-width: 260px; }
+  .testi-stars { color: #E5001A; font-size: 14px; margin-bottom: 0.8rem; }
+  .testi-quote { font-size: 14px; color: #333; line-height: 1.6; margin-bottom: 1rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: #E5001A; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+  .testi-name { font-size: 13px; font-weight: 700; color: #1a1a1a; }
+  .testi-city { font-size: 11px; color: #888; }
+
+  /* FOOTER */
+  .footer { background: #111; padding: 3rem 2rem 1.5rem; }
+  .footer-top { display: flex; gap: 3rem; flex-wrap: wrap; justify-content: space-between; margin-bottom: 2rem; }
+  .footer-brand { max-width: 220px; }
+  .footer-brand-name { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+  .footer-brand-name span { color: #E5001A; }
+  .footer-brand-desc { font-size: 13px; color: #888; line-height: 1.6; }
+  .footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.8px; }
+  .footer-col a { display: block; font-size: 13px; color: #888; text-decoration: none; margin-bottom: 8px; }
+  .footer-col a:hover { color: #E5001A; }
+  .footer-bottom { border-top: 1px solid #222; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer-copy { font-size: 12px; color: #555; }
+  .footer-red { color: #E5001A; }
+</style>
+
+<div class="site">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="18" fill="white"/>
+        <ellipse cx="13" cy="10" rx="3.5" ry="6" fill="#E5001A"/>
+        <ellipse cx="23" cy="10" rx="3.5" ry="6" fill="#E5001A"/>
+        <ellipse cx="13" cy="10" rx="2" ry="4.5" fill="white"/>
+        <ellipse cx="23" cy="10" rx="2" ry="4.5" fill="white"/>
+        <circle cx="18" cy="22" r="9" fill="white"/>
+        <circle cx="15" cy="21" r="2" fill="#E5001A"/>
+        <circle cx="21" cy="21" r="2" fill="#E5001A"/>
+        <ellipse cx="18" cy="25" rx="2" ry="1" fill="#E5001A"/>
+      </svg>
+      <span class="nav-brand">apna <span>rider</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Restaurants</a>
+      <a href="#">Become a Rider</a>
+      <a href="#">About</a>
+    </div>
+    <button class="nav-cta">Order Now</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-badge">🐰 Fast Delivery Near You</span>
+      <h1 class="hero-title">Your Favorite Food, <span>Delivered Fast</span></h1>
+      <p class="hero-sub">Apna Rider connects you with the best local restaurants. Order in seconds, track in real-time, and enjoy your meal at home.</p>
+      <div class="hero-btns">
+        <button class="btn-white">Order Now</button>
+        <button class="btn-outline">Become a Rider</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-frame">
+        <div class="phone-header">
+          <div class="phone-header-top">
+            <div>
+              <div class="phone-greeting">Good afternoon 👋</div>
+              <div class="phone-name">Ahmed Khan</div>
+            </div>
+            <div style="width:28px;height:28px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;">🔔</div>
+          </div>
+          <div class="phone-search">🔍  Search restaurants or dishes...</div>
+        </div>
+        <div class="phone-body">
+          <div class="phone-section">Categories</div>
+          <div class="phone-cats">
+            <div class="phone-cat"><span class="phone-cat-icon">🍕</span>Pizza</div>
+            <div class="phone-cat"><span class="phone-cat-icon">🍔</span>Burger</div>
+            <div class="phone-cat"><span class="phone-cat-icon">🍜</span>Desi</div>
+            <div class="phone-cat"><span class="phone-cat-icon">🧃</span>Drinks</div>
+          </div>
+          <div class="phone-section">Popular Near You</div>
+          <div class="phone-card">
+            <div class="phone-card-img">🍔</div>
+            <div>
+              <div class="phone-card-name">Burger House</div>
+              <div class="phone-card-info">2.1 km · 25 min</div>
+              <div class="phone-card-rating">★ 4.8</div>
+            </div>
+          </div>
+          <div class="phone-card">
+            <div class="phone-card-img">🍕</div>
+            <div>
+              <div class="phone-card-name">Pizza Point</div>
+              <div class="phone-card-info">1.4 km · 20 min</div>
+              <div class="phone-card-rating">★ 4.6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num">50,000+</div><div class="stat-label">Happy Customers</div></div>
+    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Partner Restaurants</div></div>
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Active Riders</div></div>
+    <div class="stat"><div class="stat-num">30 min</div><div class="stat-label">Avg. Delivery Time</div></div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-title">How It Works</div>
+    <div class="section-sub">Order your favourite food in just 3 simple steps</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-title">Choose a Restaurant</div><div class="step-desc">Browse hundreds of local restaurants and pick your favourite.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">Place Your Order</div><div class="step-desc">Select your dishes, add to cart, and pay securely.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">Track & Enjoy</div><div class="step-desc">Our rider picks up your order and delivers it fresh to your door.</div></div>
+    </div>
+  </section>
+
+  <!-- RESTAURANTS -->
+  <section class="restaurants">
+    <div class="section-title">Top Restaurants</div>
+    <div class="section-sub">Handpicked favourites in your area</div>
+    <div class="cards-grid">
+      <div class="rest-card">
+        <div class="rest-img">🍔</div>
+        <div class="rest-info">
+          <div class="rest-name">Burger Palace</div>
+          <div class="rest-meta"><span class="rest-rating">★ 4.9</span><span class="rest-time">20 min</span></div>
+          <span class="rest-tag">Burgers</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-img">🍕</div>
+        <div class="rest-info">
+          <div class="rest-name">Pizza Nation</div>
+          <div class="rest-meta"><span class="rest-rating">★ 4.7</span><span class="rest-time">25 min</span></div>
+          <span class="rest-tag">Pizza</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-img">🍛</div>
+        <div class="rest-info">
+          <div class="rest-name">Desi Darbar</div>
+          <div class="rest-meta"><span class="rest-rating">★ 4.8</span><span class="rest-time">30 min</span></div>
+          <span class="rest-tag">Desi Food</span>
+        </div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-img">🌮</div>
+        <div class="rest-info">
+          <div class="rest-name">Wrap & Roll</div>
+          <div class="rest-meta"><span class="rest-rating">★ 4.6</span><span class="rest-time">18 min</span></div>
+          <span class="rest-tag">Wraps</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIDER BANNER -->
+  <section class="ride-banner">
+    <div class="ride-text">
+      <h2>Earn on Your Own Schedule</h2>
+      <p>Join hundreds of riders earning good income delivering food across the district. Flexible hours, fast payouts.</p>
+      <div class="app-btns">
+        <button class="app-btn"><i class="ti ti-brand-android" aria-hidden="true"></i> Download for Android</button>
+        <button class="app-btn"><i class="ti ti-brand-apple" aria-hidden="true"></i> Download for iOS</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi">
+    <div class="section-title">What Our Customers Say</div>
+    <div class="section-sub">Trusted by thousands of happy customers</div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Apna Rider is the fastest delivery service I've used. Food always arrives hot and on time!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AK</div>
+          <div><div class="testi-name">Ahmed Khan</div><div class="testi-city">Rawalpindi</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"So many restaurants to choose from. The app is super easy to use and tracking is great!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">SF</div>
+          <div><div class="testi-name">Sara Fatima</div><div class="testi-city">Islamabad</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"I became a rider 3 months ago. The earnings are great and the team is very supportive."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">UB</div>
+          <div><div class="testi-name">Usman Butt</div><div class="testi-city">Rider — Rawalpindi</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">apna <span>rider</span></div>
+        <div class="footer-brand-desc">Your trusted local food delivery platform. Fast, reliable, and always on time.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>For Restaurants</h4>
+        <a href="#">Partner With Us</a>
+        <a href="#">Restaurant Login</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="footer-col">
+        <h4>For Riders</h4>
+        <a href="#">Become a Rider</a>
+        <a href="#">Rider App</a>
+        <a href="#">Rider Support</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#">support@apnarider.pk</a>
+        <a href="#">+92-XXX-XXXXXXX</a>
+        <a href="#">Rawalpindi, Punjab</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <span class="footer-red">Apna Rider</span>. All rights reserved.</div>
+      <div class="footer-copy">Privacy Policy · Terms of Service</div>
+    </div>
+  </footer>
+</div>
